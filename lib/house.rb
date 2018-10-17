@@ -28,4 +28,16 @@ class House
     area_of_house
   end
 
+  def price_per_square_foot
+    area_of_house = 0
+    @rooms.each do |element|
+      area_of_house += element.area
+      end
+    (@price.delete("$").to_i / (area_of_house + 0.00)).round(2)
+  end
+
+  def rooms_sorted_by_area
+   .sort
+  end
+
 end
