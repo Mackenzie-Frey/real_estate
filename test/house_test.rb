@@ -44,9 +44,52 @@ class HouseTest < Minitest::Test
   def test_a_house_has_rooms
     house = House.new("$400000", "123 sugar lane")
     room_1 = Room.new(:bedroom, 10, 13)
-    assert_equal [room_1], house.add_room(room_1)
     room_2 = Room.new(:bedroom, 11, 15)
+    house.add_room(room_1)
     house.add_room(room_2)
     assert_equal [room_1, room_2], house.rooms
+    room_3 = Room.new(:living_room, 25, 15)
+    room_4 = Room.new(:basement, 30, 41)
+    house.add_room(room_3)
+    house.add_room(room_4)
+    assert_equal [room_1, room_2, room_3, room_4], house.rooms
   end
+
+  def test_it_knows_categories_of_rooms
+    house = House.new("$400000", "123 sugar lane")
+    room_1 = Room.new(:bedroom, 10, 13)
+    room_2 = Room.new(:bedroom, 11, 15)
+    room_3 = Room.new(:living_room, 25, 15)
+    room_4 = Room.new(:basement, 30, 41)
+    house.add_room(room_1)
+    house.add_room(room_2)
+    house.add_room(room_3)
+    house.add_room(room_4)
+skip
+    assert_equal [room_1, room_2], house.rooms_from_category(:bedroom)
+    assert_equal [room_4], house.rooms_from_category(:basement)
+  end
+
+  def test_it_has_an_area
+    house = House.new("$400000", "123 sugar lane")
+    room_1 = Room.new(:bedroom, 10, 13)
+    room_2 = Room.new(:bedroom, 11, 15)
+    room_3 = Room.new(:living_room, 25, 15)
+    room_4 = Room.new(:basement, 30, 41)
+    house.add_room(room_1)
+    house.add_room(room_2)
+    house.add_room(room_3)
+    house.add_room(room_4)
+    assert_equal 1900, house.area
+  end
+
 end
+
+# pry(main)> house.rooms_from_category(:bedroom)
+# #=> [#<Room:0x00007fccd29b5720...>, #<Room:0x00007fccd2985f48...>]
+#
+# pry(main)> house.rooms_from_category(:basement)
+# #=> [#<Room:0x00007fccd297dc30...>]
+#
+# pry(main)> house.area
+# #=> 1900

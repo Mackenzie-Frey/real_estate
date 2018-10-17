@@ -14,4 +14,16 @@ class House
     @rooms << room
   end
 
+  def rooms_from_category(room)
+    @rooms.select(room)
+  end
+
+  def area
+    # area of house
+    # area of rooms combined
+    # iterate through array of rooms, add the area of each room
+    # set equal to new variable
+    # repeat that variable at the end
+  end
+
 end
