@@ -15,15 +15,17 @@ class House
   end
 
   def rooms_from_category(room)
-    @rooms.select(room)
+    @rooms.select do |element|
+      element.category == room
+    end
   end
 
   def area
-    # area of house
-    # area of rooms combined
-    # iterate through array of rooms, add the area of each room
-    # set equal to new variable
-    # repeat that variable at the end
+    area_of_house = 0
+    @rooms.each do |element|
+      area_of_house += element.area
+      end
+    area_of_house
   end
 
 end

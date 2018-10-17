@@ -65,7 +65,6 @@ class HouseTest < Minitest::Test
     house.add_room(room_2)
     house.add_room(room_3)
     house.add_room(room_4)
-skip
     assert_equal [room_1, room_2], house.rooms_from_category(:bedroom)
     assert_equal [room_4], house.rooms_from_category(:basement)
   end
@@ -84,12 +83,3 @@ skip
   end
 
 end
-
-# pry(main)> house.rooms_from_category(:bedroom)
-# #=> [#<Room:0x00007fccd29b5720...>, #<Room:0x00007fccd2985f48...>]
-#
-# pry(main)> house.rooms_from_category(:basement)
-# #=> [#<Room:0x00007fccd297dc30...>]
-#
-# pry(main)> house.area
-# #=> 1900
